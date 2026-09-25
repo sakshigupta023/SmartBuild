@@ -1,0 +1,13 @@
+package com.smartbuild;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SmartBuildApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SmartBuildApplication.class, args);
+	}
+
+}
