@@ -26,24 +26,32 @@ export default function Sidebar({ onClose }) {
             // If we actually want them to lead to dashboard, we can just use path="/" but this breaks active state.
             // So we'll let them point to their actual paths (which redirect to dashboard via route fallback if we didn't define them, but currently they go to fallback or Dashboard can handle it).
             // Actually, requirements: "For Phase 1: Dashboard is the only working link. Other items should be present but lead to the dashboard"
-            const targetPath = item.path === '/' ? '/' : '/'; // For phase 1, all point to '/'
+            const targetPath = item.path; // For phase 1, all point to '/'
             
             return (
-              <NavLink
-                key={item.name}
-                to={targetPath}
-                end={item.path === '/'}
-                onClick={onClose}
-                className={({ isActive }) => `
-                  flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors group
-                  ${isActive && item.path === '/' ? 'bg-slate-800 text-white border-l-4 border-indigo-500 pl-2' : 'hover:bg-slate-800 hover:text-white'}
-                `}
-              >
-                {Icon && (
-                  <Icon className="mr-3 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-300" aria-hidden="true" />
-                )}
-                {item.name}
-              </NavLink>
+             <NavLink
+            key={item.name}
+            to={targetPath}
+            end={item.path === '/'}
+            onClick={onClose}
+            className={({ isActive }) => `
+              flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors group
+              ${
+                isActive
+                  ? 'bg-slate-800 text-white border-l-4 border-indigo-500 pl-2'
+                  : 'hover:bg-slate-800 hover:text-white'
+              }
+            `}
+          >
+            {Icon && (
+              <Icon
+                className="mr-3 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-300"
+                aria-hidden="true"
+              />
+            )}
+
+            {item.name}
+          </NavLink>
             );
           })}
         </nav>
